@@ -8,6 +8,9 @@
 #include <QMessageBox>//permite mostrar cuadros de diálogo de mensajes al usuario
 #include <QtPrintSupport/QPrinter>//se utiliza para configurar la impresión en aplicaciones Qt
 #include <QtPrintSupport/QPrintDialog>//proporciona un cuadro de diálogo de impresión estándar en Qt
+#include <QTextDocumentWriter>
+
+
 
 
 QT_BEGIN_NAMESPACE

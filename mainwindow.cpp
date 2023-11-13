@@ -22,7 +22,8 @@ void MainWindow::on_actionNew_triggered()//Eliminar
 
 void MainWindow::on_actionOpen_triggered()//Abrir
 {
-    QString fileName = QFileDialog::getOpenFileName(this,"Abrir el archivo");//diálogo de selección de archivo. Guarda el nombre de la variable
+    QString fileName = QFileDialog::getOpenFileName(this, "Abrir archivo ODF", QString(), "Documentos ODF (*.odt *.ods *.odp);;Todos los archivos (*.*);;");
+    //diálogo de selección de archivo. Guarda el nombre de la variable
     QFile file(fileName);//Crea un nuevo archivo con el nombre de la variable
     currentFile = fileName; //Actualiza la variable actual
     if (!file.open(QIODevice::ReadOnly | QFile::Text)){//verifica que si el archivo no se pudo abrir
@@ -36,20 +37,35 @@ void MainWindow::on_actionOpen_triggered()//Abrir
     file.close();//Se cierra el archivo
 }
 
-void MainWindow::on_actionSave_as_triggered()//Guardar
+void MainWindow::on_actionSave_as_triggered()
 {
-    QString fileName = QFileDialog::getSaveFileName(this,"Guardar como");
-    QFile file(fileName);//Crea un nuevo archivo con el nombre de la variable
-    if (!file.open(QFile::WriteOnly | QFile::Text)){//verifica que si el archivo no se pudo abrir
-        QMessageBox::warning(this,"Alerta","No se pudo abrir el archivo: "+file.errorString());
-        return;//se sale de la función
+    // If currentFile is not empty, use it as the default file name in the dialog
+    QString fileName = QFileDialog::getSaveFileName(this, "Guardar como", currentFile, "ODF Text Document (*.odt)");
+
+    if (fileName.isEmpty()) {
+        return;  // User canceled the operation
     }
+
+    QFile file(fileName);
+
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::warning(this, "Alerta", "No se pudo abrir el archivo: " + file.errorString());
+        return;
+    }
+
+    // Update the current file and set the main window title to the chosen file name
     currentFile = fileName;
     setWindowTitle(fileName);
-    QTextStream out(&file);//Guarda el archivo
-    QString text = ui->textEdit->toPlainText();//Lo guarda como texto plano
-    out << text;//Sale el contenido al archivo
-    file.close();//Se cierra el archivo manipulado
+
+    // Get the QTextDocument from the QTextEdit
+    QTextDocument *document = ui->textEdit->document();
+
+    // Use QTextDocumentWriter to write the document to a file in ODT format
+    QTextDocumentWriter writer(currentFile);
+    writer.setFormat("ODF"); // Use "plaintext" for plain text content
+    writer.write(document);
+
+    file.close();
 }
 
 void MainWindow::on_actionPrint_triggered()//Imprimir
