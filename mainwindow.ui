@@ -10,6 +10,11 @@
     <height>681</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <bold>false</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -18,12 +23,17 @@
     <item row="0" column="7">
      <widget class="QPushButton" name="pushButton_6">
       <property name="text">
-       <string>Centrado</string>
+       <string>&lt; Centrado &gt;</string>
       </property>
      </widget>
     </item>
     <item row="0" column="3">
      <widget class="QPushButton" name="pushButton_2">
+      <property name="font">
+       <font>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Negrita</string>
       </property>
@@ -35,7 +45,7 @@
     <item row="0" column="6">
      <widget class="QPushButton" name="pushButton_5">
       <property name="text">
-       <string>Justificado</string>
+       <string>&lt;-- Izquierda</string>
       </property>
      </widget>
     </item>
@@ -44,6 +54,12 @@
     </item>
     <item row="0" column="2">
      <widget class="QPushButton" name="pushButton">
+      <property name="font">
+       <font>
+        <italic>true</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Cursiva</string>
       </property>
@@ -52,26 +68,57 @@
     <item row="0" column="8">
      <widget class="QPushButton" name="pushButton_7">
       <property name="text">
-       <string>Izquierda</string>
+       <string>Derecha --&gt;</string>
       </property>
      </widget>
     </item>
     <item row="0" column="4">
      <widget class="QPushButton" name="pushButton_3">
+      <property name="font">
+       <font>
+        <bold>true</bold>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 193, 0);</string>
+      </property>
       <property name="text">
        <string>Resaltado</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
     <item row="0" column="5">
      <widget class="QPushButton" name="pushButton_4">
+      <property name="font">
+       <font>
+        <bold>false</bold>
+        <underline>true</underline>
+       </font>
+      </property>
       <property name="text">
        <string>Subrayado</string>
       </property>
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QFontComboBox" name="fontComboBox"/>
+     <widget class="QFontComboBox" name="fontComboBox">
+      <property name="fontFilters">
+       <set>QFontComboBox::ScalableFonts</set>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

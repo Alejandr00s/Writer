@@ -39,34 +39,53 @@ void MainWindow::on_actionOpen_triggered()//Abrir
 
 void MainWindow::on_actionSave_as_triggered()
 {
-    // If currentFile is not empty, use it as the default file name in the dialog
-    QString fileName = QFileDialog::getSaveFileName(this, "Guardar como", currentFile, "ODF Text Document (*.odt)");
+    // Display a dialog to choose the format
+    QStringList formats;
+    formats << "ODF Text Document (*.odt)" << "Plain Text (*.txt)" << "HTML Document (*.html)" << "Markdown Document (*.md)";
+    QString selectedFormat = QFileDialog::getSaveFileName(this, "Choose format", currentFile, formats.join(";;"));
 
-    if (fileName.isEmpty()) {
+
+    if (selectedFormat.isEmpty()) {
         return;  // User canceled the operation
     }
 
-    QFile file(fileName);
+    QFile file(selectedFormat);
 
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
-        QMessageBox::warning(this, "Alerta", "No se pudo abrir el archivo: " + file.errorString());
+        QMessageBox::warning(this, "Alerta", "No se pudo guardar el archivo: " + file.errorString());
         return;
     }
 
     // Update the current file and set the main window title to the chosen file name
-    currentFile = fileName;
-    setWindowTitle(fileName);
+    currentFile = selectedFormat;
+    setWindowTitle(selectedFormat);
 
     // Get the QTextDocument from the QTextEdit
     QTextDocument *document = ui->textEdit->document();
 
-    // Use QTextDocumentWriter to write the document to a file in ODT format
+
+    // Create a QTextDocumentWriter based on the chosen format
     QTextDocumentWriter writer(currentFile);
-    writer.setFormat("ODF"); // Use "plaintext" for plain text content
-    writer.write(document);
+
+    if (selectedFormat.endsWith(".txt")) {
+        writer.setFormat("plaintext");
+    } else if (selectedFormat.endsWith(".html")) {
+        writer.setFormat("HTML");
+    } else if (selectedFormat.endsWith(".md")) {
+        writer.setFormat("markdown");
+    } else {
+        writer.setFormat("ODF");
+    }
+
+    // Use QTextDocumentWriter to write the document to a file in the selected format
+    if (!writer.write(document)) {
+        QMessageBox::warning(this, "Alerta", "Error al escribir en el archivo: ");
+        return;
+    }
 
     file.close();
 }
+
 
 void MainWindow::on_actionPrint_triggered()//Imprimir
 {
@@ -79,28 +98,37 @@ void MainWindow::on_actionPrint_triggered()//Imprimir
     ui->textEdit->print(&printer);//Imprime lo que está dentro del objeto text edit
 }
 
-void MainWindow::on_fontComboBox_currentFontChanged(const QFont &font)//Cambio de fuente //recibe un puntero de un objeto Qfont con la fuente
+void MainWindow::on_fontComboBox_currentFontChanged(const QFont &font)
 {
-    QTextCursor cursor = ui->textEdit->textCursor(); //Crea una instancia que manda la posición del cursor
-    QTextCharFormat charFormat = cursor.charFormat();//Iguala lo que este dentro seleccionado en forma de caracteres
-    charFormat.setFont(font);//Cambia a a la fuente seleccionada
-    cursor.mergeCharFormat(charFormat);//se aplica a lo seleccionado por el cursor
-    ui->textEdit->mergeCurrentCharFormat(charFormat);//Cambia la fuente para todo el TextEdit
+    QTextCursor cursor = ui->textEdit->textCursor();
+    QTextCharFormat charFormat = cursor.charFormat();
+
+    // Keep the existing font size and only change the font family
+    QFont newFont = charFormat.font();
+    newFont.setFamily(font.family());
+
+    charFormat.setFont(newFont);
+    cursor.mergeCharFormat(charFormat);
+
+    ui->textEdit->mergeCurrentCharFormat(charFormat);
 }
 
-
-void MainWindow::on_spinBox_valueChanged(int arg1)//Tamaño de letra
+void MainWindow::on_spinBox_valueChanged(int arg1)
 {
-    QTextCursor cursor = ui->textEdit->textCursor();//Lo mismo xd
+    QTextCursor cursor = ui->textEdit->textCursor();
 
     if (!cursor.isNull() && cursor.hasSelection()) {
         QTextCharFormat charFormat = cursor.charFormat();
         QFont font = charFormat.font();
+
+        // Change only the font size
         font.setPointSize(arg1);
+
         charFormat.setFont(font);
         cursor.mergeCharFormat(charFormat);
     }
 }
+
 void MainWindow::on_pushButton_clicked()//Cursiva
 {
     QTextCursor cursor = ui->textEdit->textCursor();//Lo mismo xd
@@ -128,7 +156,7 @@ void MainWindow::on_pushButton_3_clicked()//Resaltado
     if (charFormat.background().style() == Qt::NoBrush) {//NoBrush si no tiene fondo
         charFormat.setBackground(QBrush(Qt::green));
     } else {
-        charFormat.setBackground(QBrush(Qt::white));
+        charFormat.setBackground(Qt::NoBrush);
     }
 
     cursor.mergeCharFormat(charFormat);
