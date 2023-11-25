@@ -18,6 +18,25 @@ Con la ayuda de habilidades de programación dentro del ámbito académico fue p
 
 # ¿Qué hace el código?
 
+Dentro de nuestro proyecto, cada línea de código cumple una función muy importante dentro de este, desde personalización de botones hasta dictámenes para que el programa pueda funcionar de la mejor manera. 
+
+Teniendo esto en cuenta podemos decir que nuestro código es multipropósito y que un cambio dentro de este puede generar diferentes modificaciones en nuestro archivo y aplicación.
+
+Nuestro código está dividido en diferentes categorías las cuales cumplen diferentes funciones dentro de nuestro programa. Por un lado nos encontramos con una carpeta principal en la cual está ubicado nuestro proyecto, en nuestro caso es llamado Writer (1) el cual hace referencia a la escritura dentro de este.
+
+Dentro de la carpeta Writer (1) podemos encontrar un archivo de texto llamado CMakeLists.txt (2) en el cual podemos encontrar las características del compilador CMake que utilizamos para nuestro proyecto y en el cual se encuentran valores como la versión, los lenguajes, los componentes, librerías y diferentes funciones que serán profundizadas más adelante.
+
+A Continuación nos encontramos con la categoría Writer (3) el cual representa nuestro archivo ejecutable (*.exe) que hace referencia en sí a nuestro proyecto como tal.
+
+
+Posteriormente nos encontramos con el archivo de encabezado Header Files (5). En el cual se incluyen los botones interactivos de nuestro proyecto y sus respectivas funciones, asimismo, en este apartado se incluyen las librerías propias de la plataforma Qt Creator la cual nos ayuda a adaptar nuestro código base para que sea compatible con la plataforma. Este apartado es definido dentro de nuestro proyecto como mainwindow.h (6) o también conocido como nuestro encabezado de la ventana principal (aplicación).
+
+Siguiendo, nos encontramos con archivos de código fuente Source Files (7). Los cuales son la base de nuestra aplicación en el cual está definida la programación detrás del proyecto que asigna funciones con el fin del correcto funcionamiento del editor de texto.
+
+Dentro de esta sección están los códigos C++ (*.cpp) tales como main.cpp (8) y mainwindow.cpp (9). Dentro del archivo main.cpp (8) se encuentran las características de la ventana principal, en el cual se incluyen argumentos, tamaño, clase y ejecución.
+
+Dentro de mainwindow.cpp (9) se encuentra lo relacionado al código C++ un poco más avanzado ya que aquí es donde profundizamos en las funciones del editor de texto y asignamos condiciones para que nuestro texto no se corrompa o se dañe. Esta es la sección en donde se tiene un mayor desarrollo.
+
 
 # Explicacion de funciones
 El código tiene diversas funciones con las que funciona xd
@@ -231,3 +250,4 @@ void MainWindow::on_pushButton_7_clicked()//Izquierda
 }
 ```
 # Manual tecnico
+![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/c79b262f-f027-4cfc-918d-72d717666ee1)
