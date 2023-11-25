@@ -251,3 +251,8 @@ void MainWindow::on_pushButton_7_clicked()//Izquierda
 ```
 # Manual tecnico
 ![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/c79b262f-f027-4cfc-918d-72d717666ee1)
+
+Una vez se ejecuta la aplicación, aparece un menú con el cuál
+
+![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/ce43b3c2-d026-4116-b360-8bb811b7c623)
+
