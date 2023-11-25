@@ -260,3 +260,6 @@ Una vez se ejecuta la aplicación, aparece un menú con el cuál
 ![imagen_3](https://github.com/Alejandr00s/Writer/assets/127120995/3158b9a3-c605-4fcf-8d92-bdcf8f46d1e0)
 
 ![imagen_4](https://github.com/Alejandr00s/Writer/assets/127120995/cdb68aa9-d448-477d-bbf6-3f2f98cfe832)
+
+![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/80049c8a-0caa-4f57-8069-9370260503f6)
+
