@@ -453,28 +453,42 @@ void MainWindow::on_pushButton_7_clicked()//Izquierda
     ui->textEdit->setTextCursor(cursor);
 }
 ```
-# Manual tecnico
-![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/c79b262f-f027-4cfc-918d-72d717666ee1)
-Una vez se ejecuta la aplicación, se obsrva el menú de la aplicación, en este se encuentran un panel en el cúal se puede escribir y tomar notas y en la parte superior se encuentran todas las opciones disponibles, a continuación, se explicaran todas las funciones que posee el programa.
+# Manual técnico
+![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/c79b262f-f027-4cfc-918d-72d717666ee1)  
+
+Una vez se ejecuta la aplicación, se obsrva el menú de la aplicación, en este se encuentran un panel en el cúal se puede escribir y tomar notas y en la parte superior se encuentran todas las opciones disponibles, a continuación, se explicaran todas las funciones que posee el programa.  
+
 
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/ce43b3c2-d026-4116-b360-8bb811b7c623)
 
-Lo primero que se encuentra en la parte superior izquierda es el menú, este menú despliega una serie de opciones que se enfocan principalmente en el archivo.
-
-![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/d92e197b-4900-4778-a80b-e0d3c3205c8a)
-La primera opción es el eliminado, al hacer click en este botón, se borrara todo lo que este escrito en el panel de texto.
+  
+Lo primero que se encuentra en la parte superior izquierda es el menú, este menú despliega una serie de opciones que se enfocan principalmente en el archivo.  
 
 
-![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/20999d77-8864-4aed-8532-046fd30419e0)
-La segunda opción sirve para abrir el archivo con el cúal se va a trabajar, a tráves de un menú en el que se puede escoger el archivo especifico a emplear.
-![si](https://github.com/Alejandr00s/Writer/assets/127120995/b4dfa761-6e3d-4eb5-9be7-ed347b894409)
-Una vez elegido el archivo, se abre y el contenido del archivo aparece en el panel de texto.
+![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/d92e197b-4900-4778-a80b-e0d3c3205c8a)  
+
+La primera opción es el eliminado, al hacer click en este botón, se borrara todo lo que este escrito en el panel de texto.  
 
 
-![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/9ab550c1-b390-4633-99a9-674cb6f69f0a)
 
-![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/d547aaea-bb89-44de-a418-2693d73789af)
+![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/20999d77-8864-4aed-8532-046fd30419e0)  
 
+La segunda opción sirve para abrir el archivo con el cúal se va a trabajar, a tráves de un menú en el que se puede escoger el archivo especifico a emplear.  
+
+![si](https://github.com/Alejandr00s/Writer/assets/127120995/b4dfa761-6e3d-4eb5-9be7-ed347b894409)  
+
+Una vez elegido el archivo, se abre y el contenido del archivo aparece en el panel de texto.  
+
+![ejemplo](https://github.com/Alejandr00s/Writer/assets/127120995/7e10e757-73cd-4c0c-bdd7-58d20dff0e35)  
+
+Esto es un ejemplo de un archivo .txt abierto en la aplicación.
+
+![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/9ab550c1-b390-4633-99a9-674cb6f69f0a)  
+El botón de guardar sirve para guardar el contenido del archivo de texto con el cuál se está trabajando, permite cambiar el nombre o dejarlo con el actual del documento, además de poder elegir entre los diferentes formatos con los que se puede guardar, los formatos soportados son ODF, HTML, texto simple y Markdown.  
+
+  
+![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/d547aaea-bb89-44de-a418-2693d73789af)  
+Por último están el bóton para imprimir, este botón abrira un menú el cual permitirá imprimir el documento, además de la opción de guardarlo como PDF o como archivo para abrir en la aplicación OneNote de Microsoft
 
 
 ![imagen_3](https://github.com/Alejandr00s/Writer/assets/127120995/3158b9a3-c605-4fcf-8d92-bdcf8f46d1e0)
