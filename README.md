@@ -10,10 +10,14 @@ Facultad de Ingenierías
 # Matería
 Programacion II
 # Correo
-alejandro.osorio3@utp.edu.co
+alejandro.osorio3@utp.edu.co  
+samuel.parra@utp.edu.co
 
 # Introducción
 Con la ayuda de habilidades de programación dentro del ámbito académico fue posible desarrollar una aplicación la cual nos ayuda en la edición de texto mediante diferentes herramientas que nos aportan en la personalización de este. Utilizando la plataforma Qt Creator se nos facilitó implementar los conocimientos desarrollados en el semestre, utilizando así, conocimientos básicos de programación tales el lenguaje de programación C++ el cual implementamos dentro de nuestro proyecto para crear funciones que nos permitan realizar cambios a nuestro archivo, así como también permitir guardar nuestro archivo en diferentes formatos, imprimir, editar, etc. Todo esto con el fin de tener una mayor flexibilidad a la hora de realizar asignaciones y/o trabajos.
+
+# Descripción de su arquitectura
+Nuestro código está dividido en diferentes categorías las cuales cumplen diferentes funciones dentro de nuestro programa. Ver Fig. 1.  
 
 
 # ¿Qué hace el código?
