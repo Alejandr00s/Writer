@@ -62,7 +62,7 @@ void MainWindow::on_actionOpen_triggered()//Abrir
     setWindowTitle(fileName);//pone el nombre del archivo como el de la ventana
     QTextStream in(&file);//Abre el archivo
     QString text = in.readAll();//Lee el archivo
-    ui->textEdit->setText(text);//Lo mustra el objeto TextEdit
+    ui->textEdit->setText(text);//Lo muestra en el objeto TextEdit
     file.close();//Se cierra el archivo
 }
 ```
