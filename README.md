@@ -19,14 +19,12 @@ Con la ayuda de habilidades de programación dentro del ámbito académico fue p
 # Descripción de su arquitectura
 Nuestro código está dividido en diferentes categorías las cuales cumplen diferentes funciones dentro de nuestro programa. Ver Fig. 1.  
 
+![Arquitectura](https://github.com/Alejandr00s/Writer/assets/127120995/7812d683-8734-4557-bceb-070193083cfd)
 
-# ¿Qué hace el código?
+Fig. 1. Arquitectura y Secciones del Proyecto
 
-Dentro de nuestro proyecto, cada línea de código cumple una función muy importante dentro de este, desde personalización de botones hasta dictámenes para que el programa pueda funcionar de la mejor manera. 
 
-Teniendo esto en cuenta podemos decir que nuestro código es multipropósito y que un cambio dentro de este puede generar diferentes modificaciones en nuestro archivo y aplicación.
-
-Nuestro código está dividido en diferentes categorías las cuales cumplen diferentes funciones dentro de nuestro programa. Por un lado nos encontramos con una carpeta principal en la cual está ubicado nuestro proyecto, en nuestro caso es llamado Writer (1) el cual hace referencia a la escritura dentro de este.
+Por un lado nos encontramos con una carpeta principal en la cual está ubicado nuestro proyecto, en nuestro caso es llamado Writer (1) el cual hace referencia a la escritura dentro de este.
 
 Dentro de la carpeta Writer (1) podemos encontrar un archivo de texto llamado CMakeLists.txt (2) en el cual podemos encontrar las características del compilador CMake que utilizamos para nuestro proyecto y en el cual se encuentran valores como la versión, los lenguajes, los componentes, librerías y diferentes funciones que serán profundizadas más adelante.
 
@@ -41,9 +39,204 @@ Dentro de esta sección están los códigos C++ (*.cpp) tales como main.cpp (8) 
 
 Dentro de mainwindow.cpp (9) se encuentra lo relacionado al código C++ un poco más avanzado ya que aquí es donde profundizamos en las funciones del editor de texto y asignamos condiciones para que nuestro texto no se corrompa o se dañe. Esta es la sección en donde se tiene un mayor desarrollo.
 
+Luego tenemos nuestra interfaz llamada mainwindow.ui (10) el cual es básicamente nuestro programa en cuestión, dentro de la interfaz de usuario es donde incluimos botones, editores de texto (los cuales permiten cambiar la fuente de nuestro texto) y la hoja de desarrollo en el cual el usuario puede escribir libremente. Dentro de esta interfaz se tiene un parámetro más visual acerca de la funciones de nuestro código, lo cual nos permite entender de manera más clara la función de cada línea de código trabajada anteriormente.
+
+
+Finalmente tenemos los módulos del compilador CMake asignados como CMake Modules (11) dentro de esta carpeta encontramos la dirección de nuestro compilador dentro del ordenador el cual nos permite ejecutar todo el código ya desarrollado con el fin de dar inicio y fin a nuestra aplicación.
+
+
+# ¿Qué hace el código?
+Dentro de nuestro proyecto, cada línea de código cumple una función muy importante dentro de este, desde personalización de botones hasta dictámenes para que el programa pueda funcionar de la mejor manera. 
+
+Teniendo esto en cuenta podemos decir que nuestro código es multipropósito y que un cambio dentro de este puede generar diferentes modificaciones en nuestro archivo y aplicación.
+
 
 # Explicacion de funciones
-El código tiene diversas funciones con las que funciona xd
+Como mencionamos anteriormente, el proyecto está divido en varias secciones y cada una de estas cumplen un rol en específico para el correcto funcionamiento del editor de texto. Empezaremos por la primera sección de código: CMakeLists.txt (2).
+
+Una vez dentro del código vemos las siguientes líneas:
+```CMake
+cmake_minimum_required(VERSION 3.5)
+
+project(Writer VERSION 0.1 LANGUAGES CXX)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets PrintSupport)
+
+set(PROJECT_SOURCES
+        main.cpp
+        mainwindow.cpp
+        mainwindow.h
+        mainwindow.ui
+)
+```
+Como se mencionó anteriormente, el archivo CMakeLists.txt compone las características del compilador CMake, incluyendo versiones que en nuestro caso es la versión 3.5, versión del proyecto 0.1 y el lenguaje de programación C++ compatible a Qt creator.  
+
+También se encuentran los recursos del compilador, entre estos están los paquetes de componentes que nos ayudan a realizar diferentes tareas a través de la aplicación.
+
+Dentro del archivo CMakeLists.txt se evidencias las fuentes de que componen nuestro proyectos las cuales son las secciones que explicamos anteriormente.
+````CMake
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt_add_executable(Writer
+        MANUAL_FINALIZATION
+        ${PROJECT_SOURCES}
+    )
+# Define target properties for Android with Qt 6 as:
+#    set_property(TARGET Writer APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
+# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
+else()
+    if(ANDROID)
+        add_library(Writer SHARED
+            ${PROJECT_SOURCES}
+        )
+# Define properties for Android with Qt 5 after find_package() calls as:
+#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
+    else()
+        add_executable(Writer
+            ${PROJECT_SOURCES}
+        )
+    endif()
+endif()
+
+target_link_libraries(Writer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets PRIVATE Qt${QT_VERSION_MAJOR}::PrintSupport)
+````
+Adentrándonos en el código, se presenta una función compuesta de características del proyecto, tales como propiedades del ejecutable (*.exe), inclusión de librerías y compatibilidad de impresión.
+
+````CMake
+# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
+# If you are developing for iOS or macOS you should consider setting an
+# explicit, fixed bundle identifier manually though.
+if(${QT_VERSION} VERSION_LESS 6.1.0)
+  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.Writer)
+endif()
+set_target_properties(Writer PROPERTIES
+    ${BUNDLE_ID_OPTION}
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
+)
+
+include(GNUInstallDirs)
+install(TARGETS Writer
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_finalize_executable(Writer)
+endif()
+````
+Finalmente se define una función dependiente de la versión de Qt Creator que tengamos instalada con el fin de instalar los componentes y librerías necesarias para el correcto funcionamiento de la aplicación.
+
+La siguiente sección sería mainwindow.h (6) o también conocida como encabezado de la ventana principal.
+````c++
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+//librerias necesarias
+#include <QMainWindow>//clase proporcionada por Qt para la creación de ventanas principales de la aplicación.
+#include <QFile>//funcionalidad para trabajar con archivos en Qt.
+#include <QFileDialog>//cuadros de diálogo de selección de archivos y directorios.
+#include <QTextStream>//facilita la lectura y escritura de texto en archivos o dispositivos de datos
+#include <QMessageBox>//permite mostrar cuadros de diálogo de mensajes al usuario
+#include <QtPrintSupport/QPrinter>//se utiliza para configurar la impresión en aplicaciones Qt
+#include <QtPrintSupport/QPrintDialog>//proporciona un cuadro de diálogo de impresión estándar en Qt
+#include <QTextDocumentWriter>//Para guardar los archivos
+````
+Dentro de la sección encabezado están incluidas las librerías utilizadas en nuestro proyecto de Qt creator, aqui se define en encabezado de la ventana principal y se incluye la interfaz de usuario explicada anteriormente. Dentro de esta sección se incluyen características públicas (ventana principal) y privadas (botones, funciones, etc.) de nuestro proyecto.
+
+````c++
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+
+private slots:
+    void on_actionNew_triggered();//Eliminar
+
+    void on_actionOpen_triggered();//Abrir
+
+    void on_actionSave_as_triggered();//Guardar
+
+    void on_actionPrint_triggered();//Imprimir
+
+    void on_fontComboBox_currentFontChanged(const QFont &f);//fuentes
+
+    void on_spinBox_valueChanged(int arg1);//Tamaño de letra
+
+    void on_pushButton_clicked();//Cursiva
+
+    void on_pushButton_2_clicked();//Negrita
+
+    void on_pushButton_3_clicked();//Resaltado
+
+    void on_pushButton_4_clicked();//Subrayado
+
+    void on_pushButton_5_clicked();//justificado
+
+    void on_pushButton_6_clicked();//Centrado
+
+    void on_pushButton_7_clicked();//Izquierda
+
+private:
+    Ui::MainWindow *ui;
+    QString currentFile = "";
+};
+#endif // MAINWINDOW_H
+````
+Dentro de la sección de código fuente encontramos 2 archivos, main.cpp (8) y mainwindow.cpp (9).
+
+Para main.cpp (8): Dentro de este archivo está definida la ventana principal sin contenido, la cual recibe diferentes argumentos conforme el usuario le da uso, también posee la característica de abrir en pantalla completa para mayor comodidad.
+````c++
+#include "mainwindow.h"
+
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.showMaximized();//se muestra maximizada
+    return a.exec();
+}
+````
+Para mainwindow.cpp (9): Este es el archivo en el que utilizamos nuestro conocimiento en programación adaptado al programa Qt Creator, dentro de este relacionamos los aspectos de la interfaz del usuario y las funciones de cada herramienta y establecemos una relación de parentesco (parent).
+````c++
+#include "mainwindow.h"
+#include "./ui_mainwindow.h"
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+````
+Iniciando con las funciones, empezamos con la función “New” el cual nos permite limpiar nuestra hoja de escritura para así dar paso a un nuevo inicio, está definida por currentFile.Clear() la cual borra el contenido de la hoja de escritura y la deja limpia a la par de setText(Qstring())
+
+Nuestra siguiente función es “Open” la cual abre un archivo que ya tengamos guardado dentro de nuestro dispositivo con el fin de dar edición y/o correcciones. Primeramente se toma el nombre del archivo y se agrega una condición que permite abrir el archivo y si no se puede (ya sea porque ya está abierto o simplemente no es compatible) lanza una alerta de error. Con esto se toma la información del archivo y se transcribe en la aplicación con ayuda de in.readAll() y setText(text).
 
 ```c++
 void MainWindow::on_actionNew_triggered()//Eliminar
@@ -70,8 +263,9 @@ void MainWindow::on_actionOpen_triggered()//Abrir
     file.close();//Se cierra el archivo
 }
 ```
+Ahora tenemos la función “Guardar” el cual nos permite como su nombre lo indica, guardar nuestro archivo de texto en diferentes formatos, ya sea (*.txt), (*.html), (*.odp), etc. Para esta función se toma el nombre del archivo y se le asigna un lugar en nuestro dispositivo, en caso de que no se pueda guardar saldrá una alerta que indique que no puede guardarse el archivo.
 ```c++
-void MainWindow::on_actionSave_as_triggered()
+void MainWindow::on_actionSave_as_triggered()//Guardar
 {
     QStringList formats;//Crea una nueva lista con los formatos de texto
     formats << "ODF Text Document (*.odt)" << "Plain Text (*.txt)" << "HTML Document (*.html)" << "Markdown Document (*.md)";
@@ -114,6 +308,9 @@ void MainWindow::on_actionSave_as_triggered()
     file.close();//cierra la instancia de guardado
 }
 ```
+La función “Print” nos permite mandar una señal hacia una impresora conectada con nuestro dispositivo con el fin de imprimir la hoja de texto que hayamos creado. Está definido por la función QPrinter la cual nos lleva a una interfaz con el fin de realizar una impresión con ciertas características.
+
+También está la herramienta ComboBox en la cual se encuentran los diferentes tipos de fuentes que le queramos aplicar a nuestro texto seleccionado, todas ellas de tipo escalable y modificable.
 
 ```c++
 void MainWindow::on_actionPrint_triggered()//Imprimir
@@ -127,6 +324,8 @@ void MainWindow::on_actionPrint_triggered()//Imprimir
     ui->textEdit->print(&printer);//Imprime lo que está dentro del objeto text edit
 }
 ```
+A Continuación, tenemos 3 herramientas que nos permiten personalizar el tamaño y tipo de letra, tenemos un spinBox que permite ajustar el tamaño del texto que hayamos seleccionado, toma el argumento y lo agranda a la escala que queramos. Para el tipo de letra tenemos cursiva y negrita, las cuales tal y como el spinBox, generan un cambio en nuestro texto seleccionado. 
+
 ```c++
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &font)
 {
@@ -183,6 +382,7 @@ void MainWindow::on_pushButton_2_clicked()//Negrita
     ui->textEdit->mergeCurrentCharFormat(charFormat);
 }
 ```
+Los siguientes botones juegan un papel similar a los dos anteriores, tienen la finalidad de subrayar o resaltar nuestro texto.
 
 ```c++
 void MainWindow::on_pushButton_3_clicked()//Resaltado
@@ -214,7 +414,7 @@ void MainWindow::on_pushButton_4_clicked()//Subrayado
     ui->textEdit->mergeCurrentCharFormat(charFormat);
 }
 ```
-
+Los siguientes botones tienen la finalidad de alinear nuestro texto ya sea a la izquierda y justificado, al centro y a la derecha. Lo que hace esta función es bloquear el texto que tenemos en cierta posición con ayuda de QTextBlockFormat.
 ```c++
 void MainWindow::on_pushButton_5_clicked()//Justificado
 {
