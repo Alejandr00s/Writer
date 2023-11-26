@@ -467,6 +467,9 @@ La primera opción es el eliminado, al hacer click en este botón, se borrara to
 
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/20999d77-8864-4aed-8532-046fd30419e0)
 La segunda opción sirve para abrir el archivo con el cúal se va a trabajar, a tráves de un menú en el que se puede escoger el archivo especifico a emplear.
+![si](https://github.com/Alejandr00s/Writer/assets/127120995/b4dfa761-6e3d-4eb5-9be7-ed347b894409)
+Una vez elegido el archivo, se abre y el contenido del archivo aparece en el panel de texto.
+
 
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/9ab550c1-b390-4633-99a9-674cb6f69f0a)
 
