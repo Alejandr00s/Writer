@@ -455,14 +455,18 @@ void MainWindow::on_pushButton_7_clicked()//Izquierda
 ```
 # Manual tecnico
 ![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/c79b262f-f027-4cfc-918d-72d717666ee1)
-
-Una vez se ejecuta la aplicación, aparece un menú con el cuál
+Una vez se ejecuta la aplicación, se obsrva el menú de la aplicación, en este se encuentran un panel en el cúal se puede escribir y tomar notas y en la parte superior se encuentran todas las opciones disponibles, a continuación, se explicaran todas las funciones que posee el programa.
 
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/ce43b3c2-d026-4116-b360-8bb811b7c623)
 
+Lo primero que se encuentra en la parte superior izquierda es el menú, este menú despliega una serie de opciones que se enfocan principalmente en el archivo.
+
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/d92e197b-4900-4778-a80b-e0d3c3205c8a)
+La primera opción es el eliminado, al hacer click en este botón, se borrara todo lo que este escrito en el panel de texto.
+
 
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/20999d77-8864-4aed-8532-046fd30419e0)
+La segunda opción sirve para abrir el archivo con el cúal se va a trabajar, a tráves de un menú en el que se puede escoger el archivo especifico a emplear.
 
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/9ab550c1-b390-4633-99a9-674cb6f69f0a)
 
