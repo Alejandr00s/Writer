@@ -456,7 +456,7 @@ void MainWindow::on_pushButton_7_clicked()//Izquierda
 # Manual técnico
 ![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/c79b262f-f027-4cfc-918d-72d717666ee1)  
 
-Una vez se ejecuta la aplicación, se obsrva el menú de la aplicación, en este se encuentran un panel en el cúal se puede escribir y tomar notas y en la parte superior se encuentran todas las opciones disponibles, a continuación, se explicaran todas las funciones que posee el programa.  
+Una vez se ejecuta la aplicación, se observa el menú de la aplicación, en este se encuentran un panel en el cúal se puede escribir y tomar notas y en la parte superior se encuentran todas las opciones disponibles, a continuación, se explicaran todas las funciones que posee el programa.  
 
 
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/ce43b3c2-d026-4116-b360-8bb811b7c623)
@@ -488,24 +488,41 @@ El botón de guardar sirve para guardar el contenido del archivo de texto con el
 
   
 ![imagen_2](https://github.com/Alejandr00s/Writer/assets/127120995/d547aaea-bb89-44de-a418-2693d73789af)  
-Por último están el bóton para imprimir, este botón abrira un menú el cual permitirá imprimir el documento, además de la opción de guardarlo como PDF o como archivo para abrir en la aplicación OneNote de Microsoft
+Por último están el bóton para imprimir, este botón abrira un menú el cual permitirá imprimir el documento, además de la opción de guardarlo como PDF o como archivo para abrir en la aplicación OneNote de Microsoft.  
+
+![Imprimir](https://github.com/Alejandr00s/Writer/assets/127120995/6652e43b-db34-477d-bde3-fc18fc0446cd)  
+
+En la parte de abajo de este menú, se encuentran todas las opciones que se le pueden aplicar directamente al texto, a continuación se explicaran cada una de ellas.
 
 
-![imagen_3](https://github.com/Alejandr00s/Writer/assets/127120995/3158b9a3-c605-4fcf-8d92-bdcf8f46d1e0)
 
-![imagen_4](https://github.com/Alejandr00s/Writer/assets/127120995/cdb68aa9-d448-477d-bbf6-3f2f98cfe832)
+![imagen_3](https://github.com/Alejandr00s/Writer/assets/127120995/3158b9a3-c605-4fcf-8d92-bdcf8f46d1e0)  
+Lo primero que se encuentra es un menú en el cuál se puede hacer la personalización de la fuente con la que se muestra el texto que este seleccionado con el cursor.  
 
-![imagen_5](https://github.com/Alejandr00s/Writer/assets/127120995/80049c8a-0caa-4f57-8069-9370260503f6)
+![imagen_4](https://github.com/Alejandr00s/Writer/assets/127120995/cdb68aa9-d448-477d-bbf6-3f2f98cfe832)  
+Al lado de la selección de la fuente, se encuentra una interfaz que permite subir o bajar el tamaño del texto seleccionado.
 
-![imagen_6](https://github.com/Alejandr00s/Writer/assets/127120995/c5392d34-5499-4447-b07d-c35e6333679d)
+![imagen_5](https://github.com/Alejandr00s/Writer/assets/127120995/80049c8a-0caa-4f57-8069-9370260503f6)  
+El botón de cursiva permite poner en cursiva el texto seleccionado.  
 
-![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/453a5768-d076-446b-9e67-447281b67327)
 
-![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/1075cb1b-9c78-4add-afa3-3f36077668bf)
+![imagen_6](https://github.com/Alejandr00s/Writer/assets/127120995/c5392d34-5499-4447-b07d-c35e6333679d)  
+El bóton de negrita permite cambiar la fuente con un estilo tipográfico más grueso.  
 
-![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/b26a5ac7-5d78-41c7-9f21-ecd8cc708c7c)
+![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/453a5768-d076-446b-9e67-447281b67327)  
+El botón de resaltado permite cambiar el color del fondo en el que se encuentra el texto seleccionado, en el caso de la aplicación, varia de blanco a verde y de verde a blanco, dependiendo del fondo anterior de el texto seleccionado.  
 
-![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/05969cf7-30fa-425e-9416-b328c991da27)
+![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/1075cb1b-9c78-4add-afa3-3f36077668bf)  
+El botón de subrayado permite a poner una raya debajo del texto selecionado, o quitarla en caso de que el texto seleccionado ya este subrayado anteriormente.  
+
+![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/b26a5ac7-5d78-41c7-9f21-ecd8cc708c7c)  
+Este botón hace que todo el texto escrito en el renglón que se aplique se vaya hacía el lado derecho.  
+
+![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/05969cf7-30fa-425e-9416-b328c991da27)  
+Este botón hace que todo el texto escrito en el renglón que se aplique se vaya hacía el centro.  
 
 ![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/74169529-986a-40e7-845f-8005f9b7338c)
+  
+Este botón hace que todo el texto escrito en el renglón que se aplique se vaya hacía el lado izquierdo.  
+
 
