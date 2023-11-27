@@ -9,6 +9,8 @@ Ingeniería de Sistemas y Computación
 Facultad de Ingenierías
 # Matería
 Programacion II
+# Profesor
+Felipe Gutiérrez Isaza
 # Correo
 alejandro.osorio3@utp.edu.co  
 samuel.parra@utp.edu.co
