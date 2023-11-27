@@ -524,5 +524,7 @@ Este botón hace que todo el texto escrito en el renglón que se aplique se vaya
 ![imagen_1](https://github.com/Alejandr00s/Writer/assets/127120995/74169529-986a-40e7-845f-8005f9b7338c)
   
 Este botón hace que todo el texto escrito en el renglón que se aplique se vaya hacía el lado izquierdo.  
+ # Referencias
 
+Derek Banas.(2018). Qt Tutorial : C++ Notepad App [https://www.youtube.com/watch?v=I96uPDifZ1w&t=1186s](https://www.youtube.com/watch?v=I96uPDifZ1w&t=1186s)
 
